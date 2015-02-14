@@ -53,13 +53,10 @@ class ViewController: UIViewController {
         
         
         //Now first load your audio file using AVURLAsset. Make sure you give the correct path of your videos.
-
-        //        NSURL *audio_url = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"Asteroid_Sound" ofType:@"mp3"]];
         
         let path1 = NSBundle.mainBundle().pathForResource("National", ofType: "mp3")
         let audio_url : NSURL? = NSURL(fileURLWithPath: path1!)
         
-     //   AVURLAsset  *audioAsset = [[AVURLAsset alloc]initWithURL:audio_url options:nil];
         let audioAsset = AVURLAsset(URL: audio_url, options: nil)
         let  audio_timeRange: CMTimeRange = CMTimeRangeMake(kCMTimeZero, audioAsset.duration)
         
@@ -68,12 +65,8 @@ class ViewController: UIViewController {
         
         //Now we are creating the first AVMutableCompositionTrack containing our audio and add it to our AVMutableComposition object.
         
- //       AVMutableCompositionTrack *b_compositionAudioTrack = [mixComposition addMutableTrackWithMediaType:AVMediaTypeAudio preferredTrackID:kCMPersistentTrackID_Invalid];
-        
         let b_compositionAudioTrack: AVMutableCompositionTrack = mixComposition.addMutableTrackWithMediaType(AVMediaTypeAudio, preferredTrackID: CMPersistentTrackID())
-        
-//        [b_compositionAudioTrack insertTimeRange:audio_timeRange ofTrack:[[audioAsset tracksWithMediaType:AVMediaTypeAudio] objectAtIndex:0] atTime:kCMTimeZero error:nil];
-        
+
         var error : NSError?
         let audios = audioAsset.tracksWithMediaType(AVMediaTypeAudio)
         let assetTrackAudio:AVAssetTrack = audios[0] as AVAssetTrack
@@ -83,11 +76,6 @@ class ViewController: UIViewController {
         
         
         //Now we will load video file.
-        
-//        NSURL *video_url = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"Asteroid_Video" ofType:@"m4v"]];
-//        AVURLAsset  *videoAsset = [[AVURLAsset alloc]initWithURL:video_url options:nil];
-//        CMTimeRange video_timeRange = CMTimeRangeMake(kCMTimeZero,audioAsset.duration);
-
         
         let path2 = NSBundle.mainBundle().pathForResource("Pakistan", ofType: "mp4")
         
@@ -100,13 +88,8 @@ class ViewController: UIViewController {
         
         
         //Now we are creating the second AVMutableCompositionTrack containing our video and add it to our AVMutableComposition object.
-//        AVMutableCompositionTrack *a_compositionVideoTrack = [mixComposition addMutableTrackWithMediaType:AVMediaTypeVideo preferredTrackID:kCMPersistentTrackID_Invalid];
-        
-        
+     
         let a_compositionVideoTrack: AVMutableCompositionTrack = mixComposition.addMutableTrackWithMediaType(AVMediaTypeVideo, preferredTrackID: CMPersistentTrackID())
-        
-//        [a_compositionVideoTrack insertTimeRange:video_timeRange ofTrack:[[videoAsset tracksWithMediaType:AVMediaTypeVideo] objectAtIndex:0] atTime:kCMTimeZero error:nil];
-
         let videos = videoAsset.tracksWithMediaType(AVMediaTypeVideo)
         let assetTrackVideo:AVAssetTrack = videos[0] as AVAssetTrack
         a_compositionVideoTrack.insertTimeRange(video_timeRange, ofTrack: assetTrackVideo, atTime: kCMTimeZero, error: nil)
@@ -116,23 +99,12 @@ class ViewController: UIViewController {
         
         
         //decide the path where you want to store the final video created with audio and video merge.
-        //NSArray dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        
-        let dirPaths: NSArray = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
-//        NSString *docsDir = [dirPaths objectAtIndex:0];
+     let dirPaths: NSArray = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
         let docsDir = dirPaths[0] as NSString
         
-//NSString *outputFilePath = [docsDir stringByAppendingPathComponent:[NSString stringWithFormat:@"FinalVideo.mov"]];
         let outputFilePath = docsDir.stringByAppendingPathComponent("FinalVideo1.mov")
         
-        
-//        NSURL *outputFileUrl = [NSURL fileURLWithPath:outputFilePath];
-        
         let outputFileUrl = NSURL(fileURLWithPath: outputFilePath)
-        
-//
-//        if ([[NSFileManager defaultManager] fileExistsAtPath:outputFilePath])
-//        [[NSFileManager defaultManager] removeItemAtPath:outputFilePath error:nil];
 
         if NSFileManager.defaultManager().fileExistsAtPath(outputFilePath){
             NSFileManager.defaultManager().removeItemAtPath(outputFilePath, error: nil)
@@ -140,27 +112,14 @@ class ViewController: UIViewController {
         
         
         //Now create an AVAssetExportSession object that will save your final video at specified path.
-//        AVAssetExportSession* _assetExport = [[AVAssetExportSession alloc] initWithAsset:mixComposition presetName:AVAssetExportPresetHighestQuality];
-//        
+      
         let assetExport = AVAssetExportSession(asset: mixComposition, presetName: AVAssetExportPresetHighestQuality)
         
-//        _assetExport.outputFileType = @"com.apple.quicktime-movie";
-//        _assetExport.outputURL = outputFileUrl;
-        
-        assetExport.outputFileType = "com.apple.quicktime-movie"
+       assetExport.outputFileType = "com.apple.quicktime-movie"
         assetExport.outputURL = outputFileUrl
         
         
-        
-//        [_assetExport exportAsynchronouslyWithCompletionHandler:
-//        ^(void ) {
-//        
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//        [self exportDidFinish:_assetExport];
-//        });
-//        }
-//        ];
-        
+      
         assetExport.exportAsynchronouslyWithCompletionHandler { () -> Void in
 
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
@@ -244,7 +203,7 @@ class ViewController: UIViewController {
         
         self.vwMoviePlayer.hidden = true
         
-       //  mergeAndSave()
+         mergeAndSave()
         
         
         var docPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0] as NSString
@@ -252,15 +211,13 @@ class ViewController: UIViewController {
         println("all folder: \(NSFileManager.defaultManager().contentsOfDirectoryAtPath(docPath, error: nil))")
 
 
-        
-
         let videoUrl = NSBundle.mainBundle().URLForResource("Pakistan", withExtension: "mp4")
         let videoUrl1 = NSBundle.mainBundle().URLForResource("PakInd", withExtension: "mp4")
         
         let audioUrl = NSBundle.mainBundle().URLForResource("National", withExtension: "mp3")
 
 //        
-//        let player: MPMoviePlayerViewController = MPMoviePlayerViewController(contentURL: audioUrl)
+//        let player: MPMoviePlayerViewController = MPMoviePlayerViewController(contentURL: videoUrl)
 //        player.view.frame = CGRectMake(0, 0, self.view.frame.width / 2, self.view.frame.height / 2)
 //        self.view.addSubview(player.view)
 //        self.presentMoviePlayerViewControllerAnimated(player)
