@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AudioVideoMerge1/ViewController.swift"
-            timestampString = "445616054.883377"
+            timestampString = "445693469.665239"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
+            startingLineNumber = "170"
+            endingLineNumber = "170"
             landmarkName = "mergeAndSave()"
             landmarkType = "5">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AudioVideoMerge1/ViewController.swift"
-            timestampString = "445616054.883377"
+            timestampString = "445693469.665239"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "140"
-            endingLineNumber = "140"
+            startingLineNumber = "175"
+            endingLineNumber = "175"
             landmarkName = "exportDidFinish(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -42,12 +42,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AudioVideoMerge1/ViewController.swift"
-            timestampString = "445616054.883377"
+            timestampString = "445693469.665239"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "145"
-            endingLineNumber = "145"
-            landmarkName = "exportDidFinish(_:)"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
+            landmarkName = "mergeAndSave()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AudioVideoMerge1/ViewController.swift"
+            timestampString = "445693469.665239"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
+            landmarkName = "mergeAndSave()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

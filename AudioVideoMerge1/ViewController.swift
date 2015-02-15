@@ -19,8 +19,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var vwMoviePlayer: UIView!
     @IBOutlet weak var activityView: UIActivityIndicatorView!
     
-    var videoAsset: AVURLAsset!
-    var audioAsset: AVURLAsset!
+//    var videoAsset: AVURLAsset!
+//    var audioAsset: AVURLAsset!
 
     
     override func viewDidLoad() {
@@ -46,20 +46,26 @@ class ViewController: UIViewController {
         
         //Create AVMutableComposition Object which will hold our multiple AVMutableCompositionTrack or we can say it will hold our video and audio files.
        
-        //AVMutableComposition* mixComposition = [AVMutableComposition composition];
-
         var mixComposition = AVMutableComposition()
 
         
-        
         //Now first load your audio file using AVURLAsset. Make sure you give the correct path of your videos.
         
-        let path1 = NSBundle.mainBundle().pathForResource("National", ofType: "mp3")
-        let audio_url : NSURL? = NSURL(fileURLWithPath: path1!)
-        
+//        let path1 = NSBundle.mainBundle().pathForResource("NationalSong", ofType: "mp3")
+//        let audio_url : NSURL? = NSURL(fileURLWithPath: path1!)
+
+        let audio_url = NSBundle.mainBundle().URLForResource("NationalSong", withExtension: "mp3")
         let audioAsset = AVURLAsset(URL: audio_url, options: nil)
         let  audio_timeRange: CMTimeRange = CMTimeRangeMake(kCMTimeZero, audioAsset.duration)
         
+        
+        //Now we will load video file.
+        
+        let path2 = NSBundle.mainBundle().pathForResource("Pakistan", ofType: "mp4")
+        let video_url : NSURL? = NSURL(fileURLWithPath: path2!)
+        
+        let videoAsset = AVURLAsset(URL: video_url, options: nil)
+        let  video_timeRange: CMTimeRange = CMTimeRangeMake(kCMTimeZero, videoAsset.duration)
         
         
         
@@ -70,20 +76,50 @@ class ViewController: UIViewController {
         var error : NSError?
         let audios = audioAsset.tracksWithMediaType(AVMediaTypeAudio)
         let assetTrackAudio:AVAssetTrack = audios[0] as AVAssetTrack
-        b_compositionAudioTrack.insertTimeRange(audio_timeRange, ofTrack: assetTrackAudio, atTime: kCMTimeZero, error: nil)
-
+        
+        println("count : \(audios.count)")
+        
+        
+        
+        
+        // increment it for looping the while condition
+        var durationOfVideoInSec = CMTimeGetSeconds(videoAsset.duration)
+        var incDurationOfAudioInSec = CMTimeGetSeconds(kCMTimeZero)
+        
+        // variable audio time range (it will be deserase in last repeation b/c to fit with video duration)
+        var variable_audio_timeRange: CMTimeRange = CMTimeRangeMake(kCMTimeZero, audioAsset.duration)
+        var addDurationOfAudio = kCMTimeZero
+        
+        
+        
+        if CMTimeGetSeconds(audioAsset.duration) < CMTimeGetSeconds(videoAsset.duration){
+            
+            // do loop here
+            while incDurationOfAudioInSec < durationOfVideoInSec{
+                
+                // if audio duration is increases from the whole video duration then reduce the last repeate track of audio to fit with video duration
+                if incDurationOfAudioInSec+CMTimeGetSeconds(audioAsset.duration) > durationOfVideoInSec{
+                    let calculateTimeInSec = durationOfVideoInSec-incDurationOfAudioInSec
+                    let tempDuration = CMTimeMakeWithSeconds(calculateTimeInSec, 1)
+                    variable_audio_timeRange = CMTimeRangeMake(kCMTimeZero, tempDuration)
+                }
+                
+                b_compositionAudioTrack.insertTimeRange(variable_audio_timeRange, ofTrack: assetTrackAudio, atTime: addDurationOfAudio, error: nil)
+                
+                // add the next starting point of the audio
+                addDurationOfAudio = CMTimeAdd(addDurationOfAudio, audioAsset.duration)
+                
+                // increment audio duration
+                incDurationOfAudioInSec += CMTimeGetSeconds(audioAsset.duration)
+            }
+        
+        
+        }
     
-        
-        
-        //Now we will load video file.
-        
-        let path2 = NSBundle.mainBundle().pathForResource("Pakistan", ofType: "mp4")
-        
-        let video_url : NSURL? = NSURL(fileURLWithPath: path2!)
-        
-        let videoAsset = AVURLAsset(URL: video_url, options: nil)
-        
-        let  video_timeRange: CMTimeRange = CMTimeRangeMake(kCMTimeZero, audioAsset.duration)
+        // if audio duration
+        else if CMTimeGetSeconds(audioAsset.duration) > CMTimeGetSeconds(videoAsset.duration){
+                b_compositionAudioTrack.insertTimeRange(video_timeRange, ofTrack: assetTrackAudio, atTime: kCMTimeZero, error: nil)
+        }
         
         
         
@@ -102,7 +138,7 @@ class ViewController: UIViewController {
      let dirPaths: NSArray = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
         let docsDir = dirPaths[0] as NSString
         
-        let outputFilePath = docsDir.stringByAppendingPathComponent("FinalVideo1.mov")
+        let outputFilePath = docsDir.stringByAppendingPathComponent("FinalVideo1.mp4")
         
         let outputFileUrl = NSURL(fileURLWithPath: outputFilePath)
 
