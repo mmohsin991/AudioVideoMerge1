@@ -54,7 +54,7 @@ class ViewController: UIViewController {
 //        let path1 = NSBundle.mainBundle().pathForResource("NationalSong", ofType: "mp3")
 //        let audio_url : NSURL? = NSURL(fileURLWithPath: path1!)
 
-        let audio_url = NSBundle.mainBundle().URLForResource("NationalSong", withExtension: "mp3")
+        let audio_url = NSBundle.mainBundle().URLForResource("National", withExtension: "mp3")
         let audioAsset = AVURLAsset(URL: audio_url, options: nil)
         let  audio_timeRange: CMTimeRange = CMTimeRangeMake(kCMTimeZero, audioAsset.duration)
         
