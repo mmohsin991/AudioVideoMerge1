@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>AudioVideoMerge1.xcscheme</key>
+		<key>AudioVideoMerge.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,12 +12,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>42207B241A8E4F9D000FE2D4</key>
+		<key>42D5C0C91A923CC60029F5E5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>42207B3C1A8E4F9D000FE2D4</key>
+		<key>42D5C0E11A923CC60029F5E5</key>
 		<dict>
 			<key>primary</key>
 			<true/>

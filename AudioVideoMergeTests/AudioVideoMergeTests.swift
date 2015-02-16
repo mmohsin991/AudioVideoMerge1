@@ -1,15 +1,15 @@
 //
-//  AudioVideoMerge1Tests.swift
-//  AudioVideoMerge1Tests
+//  AudioVideoMergeTests.swift
+//  AudioVideoMergeTests
 //
-//  Created by Mohsin on 13/02/2015.
+//  Created by Mohsin on 16/02/2015.
 //  Copyright (c) 2015 PanaCloud. All rights reserved.
 //
 
 import UIKit
 import XCTest
 
-class AudioVideoMerge1Tests: XCTestCase {
+class AudioVideoMergeTests: XCTestCase {
     
     override func setUp() {
         super.setUp()

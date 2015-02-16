@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0610"
+   LastUpgradeVersion = "0600"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "42207B241A8E4F9D000FE2D4"
-               BuildableName = "AudioVideoMerge1.app"
-               BlueprintName = "AudioVideoMerge1"
-               ReferencedContainer = "container:AudioVideoMerge1.xcodeproj">
+               BlueprintIdentifier = "42D5C0C91A923CC60029F5E5"
+               BuildableName = "AudioVideoMerge.app"
+               BlueprintName = "AudioVideoMerge"
+               ReferencedContainer = "container:AudioVideoMerge.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -28,10 +28,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "42207B3C1A8E4F9D000FE2D4"
-               BuildableName = "AudioVideoMerge1Tests.xctest"
-               BlueprintName = "AudioVideoMerge1Tests"
-               ReferencedContainer = "container:AudioVideoMerge1.xcodeproj">
+               BlueprintIdentifier = "42D5C0E11A923CC60029F5E5"
+               BuildableName = "AudioVideoMergeTests.xctest"
+               BlueprintName = "AudioVideoMergeTests"
+               ReferencedContainer = "container:AudioVideoMerge.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -46,20 +46,20 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "42207B3C1A8E4F9D000FE2D4"
-               BuildableName = "AudioVideoMerge1Tests.xctest"
-               BlueprintName = "AudioVideoMerge1Tests"
-               ReferencedContainer = "container:AudioVideoMerge1.xcodeproj">
+               BlueprintIdentifier = "42D5C0E11A923CC60029F5E5"
+               BuildableName = "AudioVideoMergeTests.xctest"
+               BlueprintName = "AudioVideoMergeTests"
+               ReferencedContainer = "container:AudioVideoMerge.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "42207B241A8E4F9D000FE2D4"
-            BuildableName = "AudioVideoMerge1.app"
-            BlueprintName = "AudioVideoMerge1"
-            ReferencedContainer = "container:AudioVideoMerge1.xcodeproj">
+            BlueprintIdentifier = "42D5C0C91A923CC60029F5E5"
+            BuildableName = "AudioVideoMerge.app"
+            BlueprintName = "AudioVideoMerge"
+            ReferencedContainer = "container:AudioVideoMerge.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -75,10 +75,10 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "42207B241A8E4F9D000FE2D4"
-            BuildableName = "AudioVideoMerge1.app"
-            BlueprintName = "AudioVideoMerge1"
-            ReferencedContainer = "container:AudioVideoMerge1.xcodeproj">
+            BlueprintIdentifier = "42D5C0C91A923CC60029F5E5"
+            BuildableName = "AudioVideoMerge.app"
+            BlueprintName = "AudioVideoMerge"
+            ReferencedContainer = "container:AudioVideoMerge.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -93,10 +93,10 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "42207B241A8E4F9D000FE2D4"
-            BuildableName = "AudioVideoMerge1.app"
-            BlueprintName = "AudioVideoMerge1"
-            ReferencedContainer = "container:AudioVideoMerge1.xcodeproj">
+            BlueprintIdentifier = "42D5C0C91A923CC60029F5E5"
+            BuildableName = "AudioVideoMerge.app"
+            BlueprintName = "AudioVideoMerge"
+            ReferencedContainer = "container:AudioVideoMerge.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
