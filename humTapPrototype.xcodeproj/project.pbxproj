@@ -1,0 +1,458 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2D8CF2741A955EC6006FA721 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8CF2731A955EC6006FA721 /* AppDelegate.swift */; };
+		2D8CF2761A955EC6006FA721 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8CF2751A955EC6006FA721 /* ViewController.swift */; };
+		2D8CF2791A955EC6006FA721 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D8CF2771A955EC6006FA721 /* Main.storyboard */; };
+		2D8CF27B1A955EC6006FA721 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D8CF27A1A955EC6006FA721 /* Images.xcassets */; };
+		2D8CF27E1A955EC6006FA721 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D8CF27C1A955EC6006FA721 /* LaunchScreen.xib */; };
+		2D8CF28A1A955EC6006FA721 /* humTapPrototypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8CF2891A955EC6006FA721 /* humTapPrototypeTests.swift */; };
+		429416B11A94ACE600F761FE /* AudioVideoMergeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429416B01A94ACE600F761FE /* AudioVideoMergeVC.swift */; };
+		429416B31A94AD3800F761FE /* AudioVideoMerge.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 429416B21A94AD3800F761FE /* AudioVideoMerge.storyboard */; };
+		429416B61A94AE5700F761FE /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 429416B51A94AE5700F761FE /* AVFoundation.framework */; };
+		42A066001A963EDB0021035D /* humtap.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 42A065FF1A963EDB0021035D /* humtap.mp3 */; };
+		42C6F6EB1A96451400D7F282 /* DemoVideo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 42A066011A96436B0021035D /* DemoVideo.mp4 */; };
+		42ED922F1A94DABB005B1705 /* VisualizationAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42ED922E1A94DABB005B1705 /* VisualizationAPI.swift */; };
+		42ED92311A94DE08005B1705 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42ED92301A94DE08005B1705 /* MobileCoreServices.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2D8CF2841A955EC6006FA721 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2D8CF2661A955EC6006FA721 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2D8CF26D1A955EC6006FA721;
+			remoteInfo = humTapPrototype;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2D8CF26E1A955EC6006FA721 /* humTapPrototype.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = humTapPrototype.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D8CF2721A955EC6006FA721 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2D8CF2731A955EC6006FA721 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		2D8CF2751A955EC6006FA721 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2D8CF2781A955EC6006FA721 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2D8CF27A1A955EC6006FA721 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		2D8CF27D1A955EC6006FA721 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		2D8CF2831A955EC6006FA721 /* humTapPrototypeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = humTapPrototypeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D8CF2881A955EC6006FA721 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2D8CF2891A955EC6006FA721 /* humTapPrototypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = humTapPrototypeTests.swift; sourceTree = "<group>"; };
+		429416B01A94ACE600F761FE /* AudioVideoMergeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioVideoMergeVC.swift; sourceTree = "<group>"; };
+		429416B21A94AD3800F761FE /* AudioVideoMerge.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AudioVideoMerge.storyboard; sourceTree = "<group>"; };
+		429416B51A94AE5700F761FE /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		42A065FF1A963EDB0021035D /* humtap.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = humtap.mp3; sourceTree = "<group>"; };
+		42A066011A96436B0021035D /* DemoVideo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = DemoVideo.mp4; sourceTree = "<group>"; };
+		42ED922E1A94DABB005B1705 /* VisualizationAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisualizationAPI.swift; sourceTree = "<group>"; };
+		42ED92301A94DE08005B1705 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2D8CF26B1A955EC6006FA721 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				42ED92311A94DE08005B1705 /* MobileCoreServices.framework in Frameworks */,
+				429416B61A94AE5700F761FE /* AVFoundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2D8CF2801A955EC6006FA721 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2D8CF2651A955EC6006FA721 = {
+			isa = PBXGroup;
+			children = (
+				42ED92301A94DE08005B1705 /* MobileCoreServices.framework */,
+				429416B51A94AE5700F761FE /* AVFoundation.framework */,
+				2D8CF2701A955EC6006FA721 /* humTapPrototype */,
+				2D8CF2861A955EC6006FA721 /* humTapPrototypeTests */,
+				2D8CF26F1A955EC6006FA721 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2D8CF26F1A955EC6006FA721 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2D8CF26E1A955EC6006FA721 /* humTapPrototype.app */,
+				2D8CF2831A955EC6006FA721 /* humTapPrototypeTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2D8CF2701A955EC6006FA721 /* humTapPrototype */ = {
+			isa = PBXGroup;
+			children = (
+				2D8CF2731A955EC6006FA721 /* AppDelegate.swift */,
+				2D8CF2751A955EC6006FA721 /* ViewController.swift */,
+				42A066011A96436B0021035D /* DemoVideo.mp4 */,
+				42A065FF1A963EDB0021035D /* humtap.mp3 */,
+				429416B41A94AD4100F761FE /* AudioVideoMerge */,
+				2D8CF2771A955EC6006FA721 /* Main.storyboard */,
+				2D8CF27A1A955EC6006FA721 /* Images.xcassets */,
+				2D8CF27C1A955EC6006FA721 /* LaunchScreen.xib */,
+				2D8CF2711A955EC6006FA721 /* Supporting Files */,
+			);
+			path = humTapPrototype;
+			sourceTree = "<group>";
+		};
+		2D8CF2711A955EC6006FA721 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2D8CF2721A955EC6006FA721 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2D8CF2861A955EC6006FA721 /* humTapPrototypeTests */ = {
+			isa = PBXGroup;
+			children = (
+				2D8CF2891A955EC6006FA721 /* humTapPrototypeTests.swift */,
+				2D8CF2871A955EC6006FA721 /* Supporting Files */,
+			);
+			path = humTapPrototypeTests;
+			sourceTree = "<group>";
+		};
+		2D8CF2871A955EC6006FA721 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2D8CF2881A955EC6006FA721 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		429416B41A94AD4100F761FE /* AudioVideoMerge */ = {
+			isa = PBXGroup;
+			children = (
+				429416B01A94ACE600F761FE /* AudioVideoMergeVC.swift */,
+				42ED922E1A94DABB005B1705 /* VisualizationAPI.swift */,
+				429416B21A94AD3800F761FE /* AudioVideoMerge.storyboard */,
+			);
+			name = AudioVideoMerge;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2D8CF26D1A955EC6006FA721 /* humTapPrototype */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2D8CF28D1A955EC6006FA721 /* Build configuration list for PBXNativeTarget "humTapPrototype" */;
+			buildPhases = (
+				2D8CF26A1A955EC6006FA721 /* Sources */,
+				2D8CF26B1A955EC6006FA721 /* Frameworks */,
+				2D8CF26C1A955EC6006FA721 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = humTapPrototype;
+			productName = humTapPrototype;
+			productReference = 2D8CF26E1A955EC6006FA721 /* humTapPrototype.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2D8CF2821A955EC6006FA721 /* humTapPrototypeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2D8CF2901A955EC6006FA721 /* Build configuration list for PBXNativeTarget "humTapPrototypeTests" */;
+			buildPhases = (
+				2D8CF27F1A955EC6006FA721 /* Sources */,
+				2D8CF2801A955EC6006FA721 /* Frameworks */,
+				2D8CF2811A955EC6006FA721 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2D8CF2851A955EC6006FA721 /* PBXTargetDependency */,
+			);
+			name = humTapPrototypeTests;
+			productName = humTapPrototypeTests;
+			productReference = 2D8CF2831A955EC6006FA721 /* humTapPrototypeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2D8CF2661A955EC6006FA721 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = mrazam110;
+				TargetAttributes = {
+					2D8CF26D1A955EC6006FA721 = {
+						CreatedOnToolsVersion = 6.0.1;
+					};
+					2D8CF2821A955EC6006FA721 = {
+						CreatedOnToolsVersion = 6.0.1;
+						TestTargetID = 2D8CF26D1A955EC6006FA721;
+					};
+				};
+			};
+			buildConfigurationList = 2D8CF2691A955EC6006FA721 /* Build configuration list for PBXProject "humTapPrototype" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2D8CF2651A955EC6006FA721;
+			productRefGroup = 2D8CF26F1A955EC6006FA721 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2D8CF26D1A955EC6006FA721 /* humTapPrototype */,
+				2D8CF2821A955EC6006FA721 /* humTapPrototypeTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2D8CF26C1A955EC6006FA721 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				42C6F6EB1A96451400D7F282 /* DemoVideo.mp4 in Resources */,
+				42A066001A963EDB0021035D /* humtap.mp3 in Resources */,
+				2D8CF2791A955EC6006FA721 /* Main.storyboard in Resources */,
+				429416B31A94AD3800F761FE /* AudioVideoMerge.storyboard in Resources */,
+				2D8CF27E1A955EC6006FA721 /* LaunchScreen.xib in Resources */,
+				2D8CF27B1A955EC6006FA721 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2D8CF2811A955EC6006FA721 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2D8CF26A1A955EC6006FA721 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				429416B11A94ACE600F761FE /* AudioVideoMergeVC.swift in Sources */,
+				42ED922F1A94DABB005B1705 /* VisualizationAPI.swift in Sources */,
+				2D8CF2761A955EC6006FA721 /* ViewController.swift in Sources */,
+				2D8CF2741A955EC6006FA721 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2D8CF27F1A955EC6006FA721 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2D8CF28A1A955EC6006FA721 /* humTapPrototypeTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2D8CF2851A955EC6006FA721 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2D8CF26D1A955EC6006FA721 /* humTapPrototype */;
+			targetProxy = 2D8CF2841A955EC6006FA721 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		2D8CF2771A955EC6006FA721 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2D8CF2781A955EC6006FA721 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		2D8CF27C1A955EC6006FA721 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2D8CF27D1A955EC6006FA721 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2D8CF28B1A955EC6006FA721 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		2D8CF28C1A955EC6006FA721 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2D8CF28E1A955EC6006FA721 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = humTapPrototype/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		2D8CF28F1A955EC6006FA721 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = humTapPrototype/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		2D8CF2911A955EC6006FA721 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = humTapPrototypeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/humTapPrototype.app/humTapPrototype";
+			};
+			name = Debug;
+		};
+		2D8CF2921A955EC6006FA721 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = humTapPrototypeTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/humTapPrototype.app/humTapPrototype";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2D8CF2691A955EC6006FA721 /* Build configuration list for PBXProject "humTapPrototype" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2D8CF28B1A955EC6006FA721 /* Debug */,
+				2D8CF28C1A955EC6006FA721 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D8CF28D1A955EC6006FA721 /* Build configuration list for PBXNativeTarget "humTapPrototype" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2D8CF28E1A955EC6006FA721 /* Debug */,
+				2D8CF28F1A955EC6006FA721 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D8CF2901A955EC6006FA721 /* Build configuration list for PBXNativeTarget "humTapPrototypeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2D8CF2911A955EC6006FA721 /* Debug */,
+				2D8CF2921A955EC6006FA721 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2D8CF2661A955EC6006FA721 /* Project object */;
+}
