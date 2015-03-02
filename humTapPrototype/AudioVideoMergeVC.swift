@@ -119,8 +119,7 @@ class AudioVideoMergeVC: UIViewController ,UIImagePickerControllerDelegate,MPMed
     
     func runAVPlayer(url: NSURL){
             let av = AVPlayerViewController()
-            let player = AVPlayer(URL: url)
-            av.player = player
+             av.player =  AVPlayer(URL: url)
             self.presentViewController(av, animated: true, completion: nil)
     }
     

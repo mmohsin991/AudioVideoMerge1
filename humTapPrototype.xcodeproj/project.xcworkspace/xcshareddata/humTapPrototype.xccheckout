@@ -12,22 +12,34 @@
 	<dict>
 		<key>0E793AF6468186A9A43641078A373EEBDEFA8B5E</key>
 		<string>https://bitbucket.org/humtap/humtap-proto_panacloud.git</string>
+		<key>E093413A5F8EEF181CEEED1B1ECF459018A37D6C</key>
+		<string>https://github.com/mmohsin991/AudioVideoMerge1.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>humTapPrototype/humTapPrototype.xcodeproj</string>
+	<string>humTapPrototype.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>0E793AF6468186A9A43641078A373EEBDEFA8B5E</key>
-		<string>../../..</string>
+		<string>../../../humtap-proto_panacloud</string>
+		<key>E093413A5F8EEF181CEEED1B1ECF459018A37D6C</key>
+		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://bitbucket.org/humtap/humtap-proto_panacloud.git</string>
+	<string>https://github.com/mmohsin991/AudioVideoMerge1.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>0E793AF6468186A9A43641078A373EEBDEFA8B5E</string>
+	<string>E093413A5F8EEF181CEEED1B1ECF459018A37D6C</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>E093413A5F8EEF181CEEED1B1ECF459018A37D6C</string>
+			<key>IDESourceControlWCCName</key>
+			<string>AudioVideoMerge1</string>
+		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>

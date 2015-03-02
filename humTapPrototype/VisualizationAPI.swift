@@ -156,7 +156,6 @@ class Visualization {
                 }
             }
         }
-        
     }
     
     
@@ -165,7 +164,6 @@ class Visualization {
         let tempAsset = AVURLAsset(URL: url, options: nil)
         
         return Float(CMTimeGetSeconds(tempAsset.duration))
-        
         
     }
     
