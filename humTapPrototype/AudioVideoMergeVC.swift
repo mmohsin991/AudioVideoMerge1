@@ -203,7 +203,7 @@ class AudioVideoMergeVC: UIViewController ,UIImagePickerControllerDelegate,MPMed
             self.activityView.hidden = false
             self.activityView.startAnimating()
 
-            Visualization.mergeAudiVideo(audioUrl: self.audioUrl!, videoUrl: self.videoUrl!, outputVideName: "MergeVideo",maximumVideoDuration : 24.0, preserveAudio: self.preserveAudio) { (outputUrl, errorDesc) -> Void in
+            Visualization.mergeAudiVideo(audioUrl: self.audioUrl!, videoUrl: self.videoUrl!, outputVideName: "MergeVideo", maximumVideoDuration: 24.0, musicMixLevel: 1.0, audioMixLevel: 0.1, callBack: { (outputUrl, errorDesc) -> Void in
                 
                 if errorDesc == nil {
                     
@@ -212,7 +212,7 @@ class AudioVideoMergeVC: UIViewController ,UIImagePickerControllerDelegate,MPMed
                         self.activityView.stopAnimating()
                         self.outputUrl = outputUrl
                         self.runAVPlayer(self.outputUrl!)
-
+                        
                         self.btnPlay.hidden = false
                         
                         // set thumbnail image of video
@@ -231,7 +231,8 @@ class AudioVideoMergeVC: UIViewController ,UIImagePickerControllerDelegate,MPMed
                         self.lblErrorMsg.text = errorDesc
                     })
                 }
-            }
+            })
+
         }
             
             // if no audio or video

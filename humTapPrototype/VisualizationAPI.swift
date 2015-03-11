@@ -12,9 +12,10 @@ import MediaPlayer
 
 class Visualization {
     
-    class func mergeAudiVideo(#audioUrl: NSURL, videoUrl : NSURL, outputVideName: String, maximumVideoDuration: Float, preserveAudio: Bool, callBack : (outputUrl: NSURL? , errorDesc: String?)->Void){
+    class func mergeAudiVideo(#audioUrl: NSURL, videoUrl : NSURL, outputVideName: String, maximumVideoDuration: Float,musicMixLevel: Float, audioMixLevel: Float, callBack : (outputUrl: NSURL? , errorDesc: String?)->Void){
         var mixComposition = AVMutableComposition()
         
+        println("mohsin: \(audioUrl)")
         
         //first load your audio file using AVURLAsset, Make sure you give the correct path of your videos.
         let audioAsset = AVURLAsset(URL: audioUrl, options: nil)
@@ -29,7 +30,7 @@ class Visualization {
         if durationOfVideoInSec > CMTimeGetSeconds(videoAsset.duration) {
             durationOfVideoInSec = CMTimeGetSeconds(videoAsset.duration)
         }
-
+        
         let  video_timeRange: CMTimeRange = CMTimeRangeMake(kCMTimeZero, CMTimeMakeWithSeconds(durationOfVideoInSec, 1))
         
         
@@ -88,15 +89,6 @@ class Visualization {
         a_compositionVideoTrack.insertTimeRange(video_timeRange, ofTrack: assetTrackVideo, atTime: kCMTimeZero, error: nil)
         
         
-        // if the user preserve the audio of the real video
-        if preserveAudio{
-            let a_compositionAudioTrack: AVMutableCompositionTrack = mixComposition.addMutableTrackWithMediaType(AVMediaTypeAudio, preferredTrackID: CMPersistentTrackID())
-            let audiosTemp = videoAsset.tracksWithMediaType(AVMediaTypeAudio)
-            let assetTrackAudioTemp:AVAssetTrack = audiosTemp[0] as AVAssetTrack
-            a_compositionAudioTrack.insertTimeRange(video_timeRange, ofTrack: assetTrackAudioTemp, atTime: kCMTimeZero, error: nil)
-            
-        }
-        
         
         //define the path where you want to store the final video created with audio and video merge.
         let dirPaths: NSArray = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
@@ -122,16 +114,44 @@ class Visualization {
         let params = AVMutableAudioMixInputParameters(track:b_compositionAudioTrack)
         
         // set the volume of the humtap music
-        let volume: Float  = 0.4
-        params.setVolume(volume, atTime:CMTimeMakeWithSeconds(0,1))
+        //let volume: Float  = 0.4
+        params.setVolume(musicMixLevel, atTime:CMTimeMakeWithSeconds(0,1))
         let timeStart = CMTimeMakeWithSeconds(durationOfVideoInSec - 2.0, 1)
         let timeDuration = CMTimeMakeWithSeconds(2.0, 1)
-        params.setVolumeRampFromStartVolume( volume, toEndVolume:0, timeRange:CMTimeRangeMake(timeStart,timeDuration))
+        params.setVolumeRampFromStartVolume( musicMixLevel, toEndVolume:0, timeRange:CMTimeRangeMake(timeStart,timeDuration))
+//        let mix = AVMutableAudioMix()
+//        mix.inputParameters = [params]
+//        
+//        assetExport.audioMix = mix
+        
+        
+        
+        
+        // extract the audio from video file
+        let a_compositionAudioTrack: AVMutableCompositionTrack = mixComposition.addMutableTrackWithMediaType(AVMediaTypeAudio, preferredTrackID: CMPersistentTrackID())
+        let audiosTemp = videoAsset.tracksWithMediaType(AVMediaTypeAudio)
+        let assetTrackAudioTemp:AVAssetTrack = audiosTemp[0] as AVAssetTrack
+        a_compositionAudioTrack.insertTimeRange(video_timeRange, ofTrack: assetTrackAudioTemp, atTime: kCMTimeZero, error: nil)
+        
+        let params1 = AVMutableAudioMixInputParameters(track:a_compositionAudioTrack)
+        
+        // slow down the video's audio sound in last 2 seconds
+        // set the volume of the video's audio
+        //let volume: Float  = 0.4
+        params1.setVolume(audioMixLevel, atTime:CMTimeMakeWithSeconds(0,1))
+        let timeStart1 = CMTimeMakeWithSeconds(durationOfVideoInSec - 2.0, 1)
+        let timeDuration1 = CMTimeMakeWithSeconds(2.0, 1)
+        params1.setVolumeRampFromStartVolume( audioMixLevel, toEndVolume:0, timeRange:CMTimeRangeMake(timeStart,timeDuration))
+        
+        
+        // integrate audio and music levels in final output video audio
         let mix = AVMutableAudioMix()
-        mix.inputParameters = [params]
-        
-        
+        mix.inputParameters  = [params,params1]
         assetExport.audioMix = mix
+        
+        
+        
+        
         
         assetExport.exportAsynchronouslyWithCompletionHandler { () -> Void in
             // when export Finished
@@ -183,7 +203,7 @@ class Visualization {
         if myImage != nil {
             return UIImage(CGImage: myImage!)
         }
-
+        
         return nil
     }
     
