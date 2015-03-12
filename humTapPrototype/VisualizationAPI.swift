@@ -25,11 +25,16 @@ class Visualization {
         //Now we will load video file.
         let videoAsset = AVURLAsset(URL: videoUrl, options: nil)
         
+        
+        
+        
         var durationOfVideoInSec = Float64(maximumVideoDuration)
         // if the duration of video is less then 24 sec then update the duration of video
         if durationOfVideoInSec > CMTimeGetSeconds(videoAsset.duration) {
             durationOfVideoInSec = CMTimeGetSeconds(videoAsset.duration)
         }
+        
+        
         
         let  video_timeRange: CMTimeRange = CMTimeRangeMake(kCMTimeZero, CMTimeMakeWithSeconds(durationOfVideoInSec, 1))
         
@@ -81,13 +86,6 @@ class Visualization {
             
         }
         
-        //Now we are creating the second AVMutableCompositionTrack containing our video and add it to our AVMutableComposition object.
-        
-        let a_compositionVideoTrack: AVMutableCompositionTrack = mixComposition.addMutableTrackWithMediaType(AVMediaTypeVideo, preferredTrackID: CMPersistentTrackID())
-        let videos = videoAsset.tracksWithMediaType(AVMediaTypeVideo)
-        let assetTrackVideo:AVAssetTrack = videos[0] as AVAssetTrack
-        a_compositionVideoTrack.insertTimeRange(video_timeRange, ofTrack: assetTrackVideo, atTime: kCMTimeZero, error: nil)
-        
         
         
         //define the path where you want to store the final video created with audio and video merge.
@@ -105,10 +103,42 @@ class Visualization {
         
         //Now create an AVAssetExportSession object that will save your final video at specified path.
         
-        let assetExport = AVAssetExportSession(asset: mixComposition, presetName: AVAssetExportPresetHighestQuality)
+        let assetExport = AVAssetExportSession(asset: mixComposition, presetName: AVAssetExportPresetMediumQuality)
         
         assetExport.outputFileType = "com.apple.quicktime-movie"
         assetExport.outputURL = outputFileUrl
+        
+        
+        
+        // start new implementation
+        
+        
+        // check if the video is portraite mode then forcefully stoped it
+        if SetOrientation.isVideoPortrait(videoAsset){
+            assetExport.videoComposition = SetOrientation.getVideoComposition(videoAsset, composition:mixComposition)
+            
+        }
+        else{
+            
+            //Now we are creating the second AVMutableCompositionTrack containing our video and add it to our AVMutableComposition object.
+            
+            let a_compositionVideoTrack: AVMutableCompositionTrack = mixComposition.addMutableTrackWithMediaType(AVMediaTypeVideo, preferredTrackID: CMPersistentTrackID())
+            let videos = videoAsset.tracksWithMediaType(AVMediaTypeVideo)
+            let assetTrackVideo:AVAssetTrack = videos[0] as AVAssetTrack
+            a_compositionVideoTrack.insertTimeRange(video_timeRange, ofTrack: assetTrackVideo, atTime: kCMTimeZero, error: nil)
+            
+            
+        }
+        
+        
+        // end new implementation
+        
+        
+        
+        
+        
+        
+        
         
         // slow down the  humtap music sound in last 2 seconds
         let params = AVMutableAudioMixInputParameters(track:b_compositionAudioTrack)
@@ -119,10 +149,10 @@ class Visualization {
         let timeStart = CMTimeMakeWithSeconds(durationOfVideoInSec - 2.0, 1)
         let timeDuration = CMTimeMakeWithSeconds(2.0, 1)
         params.setVolumeRampFromStartVolume( musicMixLevel, toEndVolume:0, timeRange:CMTimeRangeMake(timeStart,timeDuration))
-//        let mix = AVMutableAudioMix()
-//        mix.inputParameters = [params]
-//        
-//        assetExport.audioMix = mix
+        //        let mix = AVMutableAudioMix()
+        //        mix.inputParameters = [params]
+        //
+        //        assetExport.audioMix = mix
         
         
         
@@ -208,4 +238,92 @@ class Visualization {
     }
     
     
+    
+}
+
+
+// new class which helps in video orientation
+class SetOrientation {
+    
+    
+    class func getVideoComposition(asset: AVAsset, composition: AVMutableComposition) -> AVMutableVideoComposition{
+        
+        let isPortrait = self.isVideoPortrait(asset)
+        
+        
+        // change kCMPersistentTrackID_Invalid to CMPersistentTrackID()
+        let compositionVideoTrack : AVMutableCompositionTrack = composition.addMutableTrackWithMediaType(AVMediaTypeVideo, preferredTrackID: CMPersistentTrackID())
+        
+        
+        let videoTrack: AVAssetTrack = asset.tracksWithMediaType(AVMediaTypeVideo)[0] as AVAssetTrack
+        compositionVideoTrack.insertTimeRange(CMTimeRangeMake(kCMTimeZero, asset.duration), ofTrack: videoTrack, atTime: kCMTimeZero, error: nil)
+        
+        
+        let layerInst : AVMutableVideoCompositionLayerInstruction = AVMutableVideoCompositionLayerInstruction(assetTrack: compositionVideoTrack)
+        
+        
+        let transform : CGAffineTransform = videoTrack.preferredTransform
+        layerInst.setTransform(transform, atTime: kCMTimeZero)
+        
+        
+        // change [AVMutableVideoCompositionInstruction videoCompositionInstruction]; to AVMutableVideoCompositionInstruction()
+        let inst : AVMutableVideoCompositionInstruction = AVMutableVideoCompositionInstruction()
+        inst.timeRange = CMTimeRangeMake(kCMTimeZero, asset.duration)
+        inst.layerInstructions = [layerInst]
+        
+        
+        let videoComposition: AVMutableVideoComposition = AVMutableVideoComposition()
+        videoComposition.instructions = [inst]
+        
+        
+        var videoSize : CGSize = videoTrack.naturalSize
+        
+        if (isPortrait){
+            println("video is portrait")
+            videoSize = CGSizeMake(videoSize.height, videoSize.width)
+        }
+        videoComposition.renderSize = videoSize
+        videoComposition.frameDuration = CMTimeMake(1,30)
+        videoComposition.renderScale = 1.0
+        return videoComposition
+        
+    }
+    
+    
+    class func isVideoPortrait(asset : AVAsset) -> Bool {
+        var isPortrait = false
+        
+        let tracks = asset.tracksWithMediaType(AVMediaTypeVideo)
+        
+        if tracks.count > 0 {
+            
+            let videoTrack = tracks[0] as AVAssetTrack
+            
+            let t : CGAffineTransform = videoTrack.preferredTransform
+            
+            // Portrait
+            if(t.a == 0 && t.b == 1.0 && t.c == -1.0 && t.d == 0)
+            {
+                isPortrait = true
+            }
+            // PortraitUpsideDown
+            if(t.a == 0 && t.b == -1.0 && t.c == 1.0 && t.d == 0)  {
+                
+                isPortrait = true
+            }
+            // LandscapeRight
+            if(t.a == 1.0 && t.b == 0 && t.c == 0 && t.d == 1.0)
+            {
+                isPortrait = false
+            }
+            // LandscapeLeft
+            if(t.a == -1.0 && t.b == 0 && t.c == 0 && t.d == -1.0)
+            {
+                isPortrait = false
+            }
+            
+        }
+        return isPortrait
+        
+    }
 }
