@@ -114,21 +114,21 @@ class Visualization {
         
         
         // check if the video is portraite mode then forcefully stoped it
-        if SetOrientation.isVideoPortrait(videoAsset){
-            assetExport.videoComposition = SetOrientation.getVideoComposition(videoAsset, composition:mixComposition)
-            
-        }
-        else{
-            
-            //Now we are creating the second AVMutableCompositionTrack containing our video and add it to our AVMutableComposition object.
-            
-            let a_compositionVideoTrack: AVMutableCompositionTrack = mixComposition.addMutableTrackWithMediaType(AVMediaTypeVideo, preferredTrackID: CMPersistentTrackID())
-            let videos = videoAsset.tracksWithMediaType(AVMediaTypeVideo)
-            let assetTrackVideo:AVAssetTrack = videos[0] as AVAssetTrack
-            a_compositionVideoTrack.insertTimeRange(video_timeRange, ofTrack: assetTrackVideo, atTime: kCMTimeZero, error: nil)
-            
-            
-        }
+        //        if SetOrientation.isVideoPortrait(videoAsset){
+        assetExport.videoComposition = SetOrientation.getVideoComposition(videoAsset, composition:mixComposition)
+        
+        //        }
+        //        else{
+        //
+        //            //Now we are creating the second AVMutableCompositionTrack containing our video and add it to our AVMutableComposition object.
+        //
+        //            let a_compositionVideoTrack: AVMutableCompositionTrack = mixComposition.addMutableTrackWithMediaType(AVMediaTypeVideo, preferredTrackID: CMPersistentTrackID())
+        //            let videos = videoAsset.tracksWithMediaType(AVMediaTypeVideo)
+        //            let assetTrackVideo:AVAssetTrack = videos[0] as AVAssetTrack
+        //            a_compositionVideoTrack.insertTimeRange(video_timeRange, ofTrack: assetTrackVideo, atTime: kCMTimeZero, error: nil)
+        //
+        //
+        //       }
         
         
         // end new implementation
@@ -221,7 +221,7 @@ class Visualization {
         
         let asset: AVAsset = AVAsset.assetWithURL(videoUrl) as AVAsset
         let imageGenerator = AVAssetImageGenerator(asset: asset)
-        
+        imageGenerator.appliesPreferredTrackTransform = true
         // take the snapshoot of the middle duration of video
         let timeInSec = CMTimeGetSeconds(asset.duration)/2
         
@@ -238,6 +238,39 @@ class Visualization {
     }
     
     
+    //    //assume that the image is loaded in landscape mode from disk
+    //    UIImage * LandscapeImage = [UIImage imageNamed: imgname];
+    //    UIImage * PortraitImage = [[UIImage alloc] initWithCGImage: LandscapeImage.CGImage
+    //    scale: 1.0
+    //    orientation: UIImageOrientationLeft];
+    
+    
+    class func getThumbnailOfVide1(videoUrl: NSURL) -> UIImage?{
+        
+        let asset: AVAsset = AVAsset.assetWithURL(videoUrl) as AVAsset
+        let imageGenerator = AVAssetImageGenerator(asset: asset)
+        var image : UIImage!
+        // take the snapshoot of the middle duration of video
+        let timeInSec = CMTimeGetSeconds(asset.duration)/2
+        
+        let time = CMTimeMakeWithSeconds(timeInSec, 1)
+        
+        var error : NSError?
+        let myImage = imageGenerator.copyCGImageAtTime(time, actualTime: nil, error: &error)
+        
+        if myImage != nil {
+            image = UIImage(CGImage: myImage!)
+        }
+        
+        return nil
+    }
+    
+    
+    
+    // new implementation
+    
+    
+    
     
 }
 
@@ -248,8 +281,8 @@ class SetOrientation {
     
     class func getVideoComposition(asset: AVAsset, composition: AVMutableComposition) -> AVMutableVideoComposition{
         
-        let isPortrait = self.isVideoPortrait(asset)
-        
+        //let isPortrait = self.isVideoPortrait(asset)
+        let orientation = self.getVideoOrientation(asset)
         
         // change kCMPersistentTrackID_Invalid to CMPersistentTrackID()
         let compositionVideoTrack : AVMutableCompositionTrack = composition.addMutableTrackWithMediaType(AVMediaTypeVideo, preferredTrackID: CMPersistentTrackID())
@@ -278,10 +311,21 @@ class SetOrientation {
         
         var videoSize : CGSize = videoTrack.naturalSize
         
-        if (isPortrait){
+        //        if (isPortrait){
+        //            println("video is portrait")
+        //            videoSize = CGSizeMake(videoSize.height, videoSize.width)
+        //        }
+        
+        if orientation == "Portrait" {
             println("video is portrait")
             videoSize = CGSizeMake(videoSize.height, videoSize.width)
         }
+        else if orientation == "Landscape" {
+            println("video is landscap")
+            videoSize = CGSizeMake(videoSize.width, videoSize.height)
+        }
+        
+        
         videoComposition.renderSize = videoSize
         videoComposition.frameDuration = CMTimeMake(1,30)
         videoComposition.renderScale = 1.0
@@ -305,25 +349,71 @@ class SetOrientation {
             if(t.a == 0 && t.b == 1.0 && t.c == -1.0 && t.d == 0)
             {
                 isPortrait = true
+                println("Portrait")
             }
             // PortraitUpsideDown
             if(t.a == 0 && t.b == -1.0 && t.c == 1.0 && t.d == 0)  {
                 
                 isPortrait = true
+                println("PortraitUpsideDown")
             }
             // LandscapeRight
             if(t.a == 1.0 && t.b == 0 && t.c == 0 && t.d == 1.0)
             {
                 isPortrait = false
+                println("LandscapeRight")
             }
             // LandscapeLeft
             if(t.a == -1.0 && t.b == 0 && t.c == 0 && t.d == -1.0)
             {
-                isPortrait = false
+                isPortrait = true
+                println("LandscapeLeft")
             }
             
         }
         return isPortrait
+        
+    }
+    
+    
+    class func getVideoOrientation(asset : AVAsset) -> String {
+        var orientation = ""
+        
+        let tracks = asset.tracksWithMediaType(AVMediaTypeVideo)
+        
+        if tracks.count > 0 {
+            
+            let videoTrack = tracks[0] as AVAssetTrack
+            
+            let t : CGAffineTransform = videoTrack.preferredTransform
+            
+            // Portrait
+            if(t.a == 0 && t.b == 1.0 && t.c == -1.0 && t.d == 0)
+            {
+                orientation = "Portrait"
+                println("Portrait")
+            }
+            // PortraitUpsideDown
+            if(t.a == 0 && t.b == -1.0 && t.c == 1.0 && t.d == 0)  {
+                
+                orientation = "Portrait"
+                println("PortraitUpsideDown")
+            }
+            // LandscapeRight
+            if(t.a == 1.0 && t.b == 0 && t.c == 0 && t.d == 1.0)
+            {
+                orientation = "Landscape"
+                println("LandscapeRight")
+            }
+            // LandscapeLeft
+            if(t.a == -1.0 && t.b == 0 && t.c == 0 && t.d == -1.0)
+            {
+                orientation = "Landscape"
+                println("LandscapeLeft")
+            }
+            
+        }
+        return orientation
         
     }
 }
