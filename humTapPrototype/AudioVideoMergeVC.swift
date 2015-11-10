@@ -175,7 +175,7 @@ class AudioVideoMergeVC: UIViewController ,UIImagePickerControllerDelegate,MPMed
     
     @IBAction func defaultVideo(sender: AnyObject) {
         
-        self.videoUrl = NSBundle.mainBundle().URLForResource("IMG_1996", withExtension: "MOV")
+        self.videoUrl = NSBundle.mainBundle().URLForResource("IMG_1998", withExtension: "MOV")
         self.lblVideoName.text = "IMG_0716.MOV"
         
         
